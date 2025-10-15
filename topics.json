@@ -1,0 +1,462 @@
+{
+  "java_interview_roadmap": [
+    {
+      "topic": "Language Fundamentals",
+      "subtopics": [
+        {
+          "name": "Java Platform Basics",
+          "package": "_01_01_java_platform_basics",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Program Structure",
+          "package": "_01_02_program_structure",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Primitive Types & Literals",
+          "package": "_01_03_primitive_types_and_literals",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Variables & Scope",
+          "package": "_01_04_variables_and_scope",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Operators & Expressions",
+          "package": "_01_05_operators_and_expressions",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Control Flow",
+          "package": "_01_06_control_flow",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Methods & Parameters",
+          "package": "_01_07_methods_and_parameters",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Arrays",
+          "package": "_01_08_arrays",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Strings & StringBuilder",
+          "package": "_01_09_strings_and_stringbuilder",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Packages & Access Control",
+          "package": "_01_10_packages_and_access_control",
+          "difficulty": "Beginner",
+          "importance": "Medium",
+          "frequency": "Common",
+          "code_generated": "true"
+        }
+      ]
+    },
+    {
+      "topic": "Object-Oriented Programming",
+      "subtopics": [
+        {
+          "name": "Classes & Objects",
+          "package": "_02_01_classes_and_objects",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Constructors & Initialization",
+          "package": "_02_02_constructors_and_initialization",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Encapsulation & Access Modifiers",
+          "package": "_02_03_encapsulation_and_access_modifiers",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Inheritance & Composition",
+          "package": "_02_04_inheritance_and_composition",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Polymorphism & Overriding",
+          "package": "_02_05_polymorphism_and_overriding",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Abstract Classes & Interfaces",
+          "package": "_02_06_abstract_classes_and_interfaces",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Design Principles (SOLID)",
+          "package": "_02_07_design_principles_solid",
+          "difficulty": "Advanced",
+          "importance": "High",
+          "frequency": "Occasional",
+          "code_generated": "true"
+        },
+        {
+          "name": "Immutability & Defensive Copying",
+          "package": "_02_08_immutability_and_defensive_copying",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        }
+      ]
+    },
+    {
+      "topic": "Core APIs & Utilities",
+      "subtopics": [
+        {
+          "name": "Object Class Methods",
+          "package": "_03_01_object_class_methods",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Wrapper Classes & Autoboxing",
+          "package": "_03_02_wrapper_classes_and_autoboxing",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Enums",
+          "package": "_03_03_enums",
+          "difficulty": "Intermediate",
+          "importance": "Medium",
+          "frequency": "Occasional",
+          "code_generated": "true"
+        },
+        {
+          "name": "Utility Classes (Objects, Math, UUID, Random)",
+          "package": "_03_04_utility_classes_objects_math_uuid_random",
+          "difficulty": "Intermediate",
+          "importance": "Medium",
+          "frequency": "Occasional",
+          "code_generated": "true"
+        }
+      ]
+    },
+    {
+      "topic": "Collections Framework",
+      "subtopics": [
+        {
+          "name": "Collection Hierarchy",
+          "package": "_04_01_collection_hierarchy",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "List, Set, Map Implementations",
+          "package": "_04_02_list_set_map_implementations",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Iterator & Fail-Fast Behavior",
+          "package": "_04_03_iterator_and_fail_fast_behavior",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Comparable vs Comparator",
+          "package": "_04_04_comparable_vs_comparator",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Immutable & Synchronized Collections",
+          "package": "_04_05_immutable_and_synchronized_collections",
+          "difficulty": "Advanced",
+          "importance": "Medium",
+          "frequency": "Occasional",
+          "code_generated": "true"
+        }
+      ]
+    },
+    {
+      "topic": "Generics & Type System",
+      "subtopics": [
+        {
+          "name": "Generic Classes & Methods",
+          "package": "_05_01_generic_classes_and_methods",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Wildcards & Bounds (? extends / ? super)",
+          "package": "_05_02_wildcards_and_bounds",
+          "difficulty": "Advanced",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Type Erasure & Bridge Methods",
+          "package": "_05_03_type_erasure_and_bridge_methods",
+          "difficulty": "Advanced",
+          "importance": "Medium",
+          "frequency": "Occasional",
+          "code_generated": "true"
+        }
+      ]
+    },
+    {
+      "topic": "Streams, Lambdas & Functional Programming",
+      "subtopics": [
+        {
+          "name": "Lambda Expressions & Functional Interfaces",
+          "package": "_06_01_lambda_expressions_and_functional_interfaces",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Stream API (map, filter, collect)",
+          "package": "_06_02_stream_api_map_filter_collect",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Collectors & Grouping",
+          "package": "_06_03_collectors_and_grouping",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Parallel Streams & Performance",
+          "package": "_06_04_parallel_streams_and_performance",
+          "difficulty": "Advanced",
+          "importance": "Medium",
+          "frequency": "Occasional",
+          "code_generated": "true"
+        }
+      ]
+    },
+    {
+      "topic": "Exception Handling",
+      "subtopics": [
+        {
+          "name": "Checked vs Unchecked Exceptions",
+          "package": "_07_01_checked_vs_unchecked_exceptions",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "try/catch/finally",
+          "package": "_07_02_try_catch_finally",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Try-with-Resources",
+          "package": "_07_03_try_with_resources",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Custom Exceptions",
+          "package": "_07_04_custom_exceptions",
+          "difficulty": "Intermediate",
+          "importance": "Medium",
+          "frequency": "Occasional",
+          "code_generated": "true"
+        },
+        {
+          "name": "Exception Propagation & Translation",
+          "package": "_07_05_exception_propagation_and_translation",
+          "difficulty": "Advanced",
+          "importance": "Medium",
+          "frequency": "Occasional",
+          "code_generated": "true"
+        }
+      ]
+    },
+    {
+      "topic": "Multithreading & Concurrency",
+      "subtopics": [
+        {
+          "name": "Thread Lifecycle & Runnable",
+          "package": "_08_01_thread_lifecycle_and_runnable",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Synchronization & Locks",
+          "package": "_08_02_synchronization_and_locks",
+          "difficulty": "Advanced",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Executors & Thread Pools",
+          "package": "_08_03_executors_and_thread_pools",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Futures & CompletableFuture",
+          "package": "_08_04_futures_and_completablefuture",
+          "difficulty": "Advanced",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Concurrency Utilities (Locks, Queues)",
+          "package": "_08_05_concurrency_utilities_locks_queues",
+          "difficulty": "Advanced",
+          "importance": "High",
+          "frequency": "Occasional",
+          "code_generated": "true"
+        }
+      ]
+    },
+    {
+      "topic": "I/O and File Handling",
+      "subtopics": [
+        {
+          "name": "Streams (FileReader, BufferedReader)",
+          "package": "_09_01_streams_filereader_bufferedreader",
+          "difficulty": "Beginner",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "NIO.2 (Paths, Files)",
+          "package": "_09_02_nio2_paths_files",
+          "difficulty": "Intermediate",
+          "importance": "High",
+          "frequency": "Common",
+          "code_generated": "true"
+        },
+        {
+          "name": "Serialization",
+          "package": "_09_03_serialization",
+          "difficulty": "Advanced",
+          "importance": "Medium",
+          "frequency": "Occasional",
+          "code_generated": "true"
+        }
+      ]
+    },
+    {
+      "topic": "Advanced Topics",
+      "subtopics": [
+        {
+          "name": "Reflection & Annotations",
+          "package": "_10_01_reflection_and_annotations",
+          "difficulty": "Advanced",
+          "importance": "Medium",
+          "frequency": "Occasional",
+          "code_generated": "true"
+        },
+        {
+          "name": "JVM Internals & Class Loading",
+          "package": "_10_02_jvm_internals_and_class_loading",
+          "difficulty": "Advanced",
+          "importance": "Medium",
+          "frequency": "Occasional",
+          "code_generated": "true"
+        },
+        {
+          "name": "Garbage Collection",
+          "package": "_10_03_garbage_collection",
+          "difficulty": "Advanced",
+          "importance": "Medium",
+          "frequency": "Occasional",
+          "code_generated": "true"
+        },
+        {
+          "name": "Modules (JPMS)",
+          "package": "_10_04_modules_jpms",
+          "difficulty": "Advanced",
+          "importance": "Low",
+          "frequency": "Rare",
+          "code_generated": "true"
+        }
+      ]
+    }
+  ]
+}
