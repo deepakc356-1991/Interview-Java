@@ -16,6 +16,9 @@ package _01_06_control_flow;
 import java.util.Arrays;
 import java.util.List;
 
+import static _01_02_program_structure._03_InterviewQA.basic;
+import static _01_02_program_structure._03_InterviewQA.intermediate;
+
 public class _03_InterviewQA {
 
     public static void main(String[] args) {

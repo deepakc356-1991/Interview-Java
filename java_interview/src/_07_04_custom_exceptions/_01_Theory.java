@@ -33,6 +33,8 @@ public class _01_Theory {
             placeOrder(ok);
         } catch (OrderValidationException | PaymentFailedException e) {
             System.out.println("[MultiCatch] caught=" + e.getClass().getSimpleName() + " | msg=" + e.getMessage());
+        } catch (OrderException e) {
+            throw new RuntimeException(e);
         }
 
         // 3) Suppressed exceptions in try-with-resources

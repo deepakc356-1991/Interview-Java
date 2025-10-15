@@ -320,6 +320,7 @@ public class _02_Examples {
         CompletableFuture<String> handled = CompletableFuture.<String>supplyAsync(() -> {
             sleep(50);
             if (true) throw new RuntimeException("oops");
+            return "";
         }).handle((val, ex) -> ex == null ? val : "fallback-from-handle");
         log("handle result = " + handled.join());
 

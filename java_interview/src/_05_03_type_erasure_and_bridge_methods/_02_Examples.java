@@ -289,7 +289,10 @@ class ReifiableVsNonReifiableDemo {
 
         String[] sa = new String[0];
         Integer[] ia = new Integer[0];
-        System.out.println("String[].class == Integer[].class ? " + (sa.getClass() == ia.getClass())); // false
+        System.out.println(
+                "String[].class == Integer[].class ? "
+                        + (((Class<?>) sa.getClass()) == ((Class<?>) ia.getClass()))
+        ); // false
 
         // Illegal: cannot test instanceof parameterized type
         // if (ls instanceof List<String>) {} // does not compile

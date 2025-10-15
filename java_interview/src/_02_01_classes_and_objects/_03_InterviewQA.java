@@ -106,12 +106,12 @@ final class DemoBasics {
     static void run() {
         System.out.println("-- Basics");
         // Default field values (instance fields only; local vars must be initialized)
-        Defaults d = new Defaults();
+        Defaults3 d = new Defaults3();
         d.print();
 
         // Constructors, 'this' chaining, and encapsulation
-        Person p1 = new Person();
-        Person p2 = new Person("Alice", 30).setAge(31); // fluent chain using 'this'
+        Person3 p1 = new Person3();
+        Person3 p2 = new Person3("Alice", 30).setAge(31); // fluent chain using 'this'
         System.out.println(p1);
         System.out.println(p2);
 
@@ -122,17 +122,17 @@ final class DemoBasics {
     }
 }
 
-class Defaults {
+class Defaults3 {
     int i;          // 0
     boolean b;      // false
     Object obj;     // null
     void print() {
-        System.out.println("Defaults: i=" + i + ", b=" + b + ", obj=" + obj);
+        System.out.println("Defaults3: i=" + i + ", b=" + b + ", obj=" + obj);
     }
 }
 
 // Encapsulation: private fields + getters/setters; constructor overloading/chaining
-class Person {
+class Person3 {
     private String name;
     private int age;
 
@@ -141,17 +141,17 @@ class Person {
 
     static {
         // Runs once when the class loads
-        System.out.println("Person: static initializer");
+        System.out.println("Person3: static initializer");
     }
     {
         // Runs before each constructor
-        System.out.println("Person: instance initializer");
+        System.out.println("Person3: instance initializer");
     }
 
-    public Person() {
+    public Person3() {
         this("Unknown", 0);
     }
-    public Person(String name, int age) {
+    public Person3(String name, int age) {
         this.name = name;
         this.age = age;
         population++;
@@ -162,18 +162,18 @@ class Person {
     public int getAge() { return age; }
 
     // Fluent (chainable) setter to demo 'this'
-    public Person setAge(int age) { this.age = age; return this; }
+    public Person3 setAge(int age) { this.age = age; return this; }
 
     public static int getPopulation() { return population; }
 
     @Override
     public String toString() {
-        return "Person{name='" + name + "', age=" + age + "}";
+        return "Person3{name='" + name + "', age=" + age + "}";
     }
 }
 
 // Inheritance demo with 'super'
-class Employee extends Person {
+class Employee extends Person3 {
     private final String employeeId;
 
     public Employee(String name, int age, String employeeId) {
@@ -194,10 +194,10 @@ class Employee extends Person {
 final class DemoStaticVsInstance {
     static void run() {
         System.out.println("-- Static vs Instance");
-        int before = Person.getPopulation();
-        Person a = new Person("A", 20);
-        Person b = new Person("B", 22);
-        System.out.println("Population before=" + before + ", after=" + Person.getPopulation());
+        int before = Person3.getPopulation();
+        Person3 a = new Person3("A", 20);
+        Person3 b = new Person3("B", 22);
+        System.out.println("Population before=" + before + ", after=" + Person3.getPopulation());
 
         StaticVsInstance o1 = new StaticVsInstance();
         StaticVsInstance o2 = new StaticVsInstance();

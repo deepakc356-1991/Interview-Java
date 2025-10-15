@@ -152,7 +152,7 @@ All demos are self-contained and safe to run. Where behavior depends on the JVM/
 */
 public class _03_InterviewQA {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Throwable {
         separator("ClassLoader hierarchy");
         demoClassLoaderHierarchy();
 

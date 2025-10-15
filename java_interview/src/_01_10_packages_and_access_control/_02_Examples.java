@@ -77,7 +77,7 @@ public class _02_Examples {
         System.out.println("Factory created: " + e1.getValue());
 
         // SECTION 6: Package-private top-level is visible inside the same package
-        PackagePrivateTopLevel pptl = new PackagePrivateTopLevel("in package");
+        PackagePrivateTopLevel2 pptl = new PackagePrivateTopLevel2("in package");
         System.out.println(pptl.message());
 
         // SECTION 7: Name collisions and imports
@@ -97,7 +97,7 @@ public class _02_Examples {
         System.out.println("Balance: " + acc.getBalance());
 
         // SECTION 11: Visibility in overriding
-        VisibilityOverrideBase vb = new VisibilityOverrideBase();
+        VisibilityOverrideBase2 vb = new VisibilityOverrideBase2();
         vb.m();
         VisibilityOverrideGood vg = new VisibilityOverrideGood();
         vg.m();
@@ -182,15 +182,15 @@ class PrivateConstructorExample {
     }
 }
 
-class PackagePrivateTopLevel {
+class PackagePrivateTopLevel2 {
     private final String msg;
 
-    PackagePrivateTopLevel(String msg) {
+    PackagePrivateTopLevel2(String msg) {
         this.msg = msg;
     }
 
     String message() {
-        return "PackagePrivateTopLevel: " + msg;
+        return "PackagePrivateTopLevel2: " + msg;
     }
 }
 
@@ -227,17 +227,17 @@ class BankAccount {
    Overriding and visibility
    ============================ */
 
-class VisibilityOverrideBase {
-    public void m() { System.out.println("VisibilityOverrideBase.m (public)"); }
+class VisibilityOverrideBase2 {
+    public void m() { System.out.println("VisibilityOverrideBase2.m (public)"); }
 }
 
 // OK: same or wider visibility when overriding
-class VisibilityOverrideGood extends VisibilityOverrideBase {
+class VisibilityOverrideGood extends VisibilityOverrideBase2 {
     @Override public void m() { System.out.println("VisibilityOverrideGood.m (public)"); }
 }
 
 // NOT OK (would not compile): cannot reduce visibility
-// class VisibilityOverrideBad extends VisibilityOverrideBase {
+// class VisibilityOverrideBad extends VisibilityOverrideBase2 {
 //     @Override protected void m() { } // ERROR: attempting to reduce from public to protected
 // }
 

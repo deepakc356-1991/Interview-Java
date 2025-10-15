@@ -17,7 +17,7 @@ import java.util.function.Predicate;
  */
 public class _03_InterviewQA {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Throwable {
         System.out.println("=== Basics ===");
         basics();
         System.out.println("\n=== Parameters & Pass-by-Value ===");

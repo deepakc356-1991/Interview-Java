@@ -218,7 +218,7 @@ public class _03_InterviewQA {
             int value = Integer.parseInt(input);           // may throw NumberFormatException
             if (value < 0) throw new IllegalArgumentException("Value must be non-negative");
             return value;
-        } catch (NumberFormatException | IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             throw new BadRequestException("Invalid input: " + input, e);
         }
     }

@@ -112,7 +112,12 @@ public class _01_Theory {
 
         // Interface defaults and private methods (Java 9+)
         System.out.println("Interface CONST: " + InterfaceNotes.CONST);
-        System.out.println("Interface default method: " + new InterfaceNotes() {}.publicApi());
+        System.out.println("Interface default method: " + new InterfaceNotes() {
+            @Override
+            public String get() {
+                return "";
+            }
+        }.publicApi());
 
         System.out.println("circumference=" + circumference + ", bigger=" + bigger +
                            ", utilDate=" + utilDate + ", sqlDate=" + sqlDate);
@@ -197,8 +202,13 @@ public class _01_Theory {
     }
 
     // Interface visibility rules
+    @FunctionalInterface
     interface InterfaceNotes {
         int CONST = 123; // implicitly public static final
+
+        // Add a SAM so the lambda has a target
+        String get();
+
         default String publicApi() {
             return helper();
         }
@@ -209,6 +219,7 @@ public class _01_Theory {
             return () -> "unused";
         }
     }
+
 }
 
 // Package-private top-level type: visible only within this package

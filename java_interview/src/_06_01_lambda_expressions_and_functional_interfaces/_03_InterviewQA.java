@@ -1,10 +1,7 @@
 package _06_01_lambda_expressions_and_functional_interfaces;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Serializable;
-import java.io.StringReader;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,37 +12,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Random;
 import java.util.StringJoiner;
 import java.util.TreeMap;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.Future;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.BiPredicate;
-import java.util.function.BinaryOperator;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import java.util.function.DoubleFunction;
-import java.util.function.DoublePredicate;
-import java.util.function.DoubleUnaryOperator;
-import java.util.function.Function;
-import java.util.function.IntBinaryOperator;
-import java.util.function.IntConsumer;
-import java.util.function.IntFunction;
-import java.util.function.IntPredicate;
-import java.util.function.IntSupplier;
-import java.util.function.IntUnaryOperator;
-import java.util.function.LongSupplier;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
+import java.util.function.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -176,7 +147,7 @@ public class _03_InterviewQA {
                 Runnable lambda = () -> System.out.println("[Q5][lambda] this == Demo? " + (this instanceof Demo));
                 Runnable anon = new Runnable() {
                     @Override public void run() {
-                        System.out.println("[Q5][anon] this == Demo? " + (this instanceof Demo));
+                        System.out.println("[Q5][anon] this == Demo? " + (((Object) this) instanceof Demo));
                     }
                 };
                 lambda.run(); // true
@@ -378,8 +349,8 @@ public class _03_InterviewQA {
 
         // Fixed-point combinator approach (advanced):
         Function<IntFunction<Long>, IntFunction<Long>> F = self -> n -> (n <= 1) ? 1L : n * self.apply(n - 1);
-        IntFunction<Long> yFactorial = fix(F);
-        System.out.println("[Q15] factorial via fix(6) = " + yFactorial.apply(6));
+//        IntFunction<Long> yFactorial = fix(F);
+//        System.out.println("[Q15] factorial via fix(6) = " + yFactorial.apply(6));
     }
 
     // Q16: Primitive specializations and performance notes
@@ -412,8 +383,8 @@ public class _03_InterviewQA {
          Q: What are intersection types for lambdas?
          A: A lambda can be cast to multiple interfaces at once (useful for serialization + behavior).
         */
-        boolean result = testSerializablePredicate((Serializable & Predicate<String>) s -> s.contains("X"), "AXY");
-        System.out.println("[Q18] Serializable & Predicate test = " + result);
+//        boolean result = testSerializablePredicate((Serializable & Predicate<String>) s -> s.contains("X"), "AXY");
+//        System.out.println("[Q18] Serializable & Predicate test = " + result);
     }
 
     // Q19: Comparator composition and method references
@@ -689,9 +660,9 @@ public class _03_InterviewQA {
         return b -> f.apply(a, b);
     }
 
-    static <T> boolean testSerializablePredicate(Serializable & Predicate<T> p, T v) {
-        return p.test(v);
-    }
+//    static <T> boolean testSerializablePredicate(Serializable & Predicate<T> p, T v, String axy) {
+//        return p.test(v);
+//    }
 
     @FunctionalInterface
     interface StrTransformer {

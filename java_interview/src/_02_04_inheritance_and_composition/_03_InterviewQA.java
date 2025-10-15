@@ -46,8 +46,8 @@ public class _03_InterviewQA {
         System.out.println("\n=== Aggregation vs Composition ===");
         demoAggregationVsComposition();
 
-        System.out.println("\n=== LSP: Rectangle-Square problem (why composition) ===");
-        demoLSPRectangleSquare();
+        System.out.println("\n=== LSP: Rectangle2-Square problem (why composition) ===");
+        demoLSPRectangle2Square();
 
         System.out.println("\n=== equals/hashCode with inheritance pitfalls ===");
         demoEqualsInheritancePitfall();
@@ -76,23 +76,23 @@ public class _03_InterviewQA {
     // Q: What is inheritance? A: Mechanism for IS-A relationship; code reuse; polymorphism via overriding.
     // Q: What is polymorphism? A: Call resolved at runtime based on actual object type.
     static void demoBasicsInheritancePolymorphism() {
-        Animal a = new Animal();
-        Animal b = new Dog(); // upcasting
-        a.speak();            // Animal speaks
-        b.speak();            // Dog barks (dynamic dispatch)
+        Animal2 a = new Animal2();
+        Animal2 b = new Dog2(); // upcasting
+        a.speak();            // Animal2 speaks
+        b.speak();            // Dog2 barks (dynamic dispatch)
     }
 
     // Q: What is composition? A: HAS-A relationship; objects contain other objects and delegate work.
     // Q: When to use? A: Prefer when you want to reuse behavior flexibly and avoid tight coupling.
     static void demoCompositionDelegation() {
-        Car car = new Car(new Engine());
-        car.drive();
+        Car2 Car2 = new Car2(new Engine2());
+        Car2.drive();
     }
 
     // Q: Overriding vs Overloading?
     // Overriding = same signature in subclass, runtime dispatch. Overloading = same name, different parameters, resolved at compile time.
     static void demoOverrideVsOverload() {
-        Dog d = new Dog();
+        Dog2 d = new Dog2();
         d.speak();                 // override
         d.speak("Loud:");          // overload
     }
@@ -100,29 +100,29 @@ public class _03_InterviewQA {
     // Q: Upcasting/Downcasting?
     // Upcasting is safe; Downcasting requires instanceof or can throw ClassCastException.
     static void demoUpDownCasting() {
-        Animal a = new Dog(); // upcast
-        if (a instanceof Dog) {
-            Dog d = (Dog) a;  // safe downcast
+        Animal2 a = new Dog2(); // upcast
+        if (a instanceof Dog2) {
+            Dog2 d = (Dog2) a;  // safe downcast
             d.fetch();
         }
-        Animal catAsAnimal = new Cat();
-        // Dog notDog = (Dog) catAsAnimal; // would throw ClassCastException at runtime
+        Animal2 Cat2AsAnimal2 = new Cat2();
+        // Dog2 notDog2 = (Dog2) Cat2AsAnimal2; // would throw ClassCastException at runtime
     }
 
     // Q: Are fields overridden? A: No, fields are hidden; static methods are hidden; only instance methods are overridden.
     static void demoFieldHidingAndStatic() {
-        Animal a = new Dog();
-        System.out.println("Field via reference type (Animal): " + a.type); // "Animal"
-        System.out.println("Static via class Animal:"); Animal.staticInfo();
-        System.out.println("Static via class Dog:"); Dog.staticInfo();
-        System.out.println("Static via ref of type Animal (calls Animal):"); a.staticInfo();
+        Animal2 a = new Dog2();
+        System.out.println("Field via reference type (Animal2): " + a.type); // "Animal2"
+        System.out.println("Static via class Animal2:"); Animal2.staticInfo();
+        System.out.println("Static via class Dog2:"); Dog2.staticInfo();
+        System.out.println("Static via ref of type Animal2 (calls Animal2):"); a.staticInfo();
     }
 
     // Q: super vs this?
     // super calls parent methods/constructors; this refers to current instance/other constructors.
     // Q: Are constructors inherited? A: No.
     static void demoSuperThis() {
-        Employee e = new Employee("Ava", 42);
+        Employee2 e = new Employee2("Ava", 42);
         System.out.println(e);
     }
 
@@ -139,19 +139,19 @@ public class _03_InterviewQA {
     // Abstract: can hold state; some implementation. Interface: contract; multiple inheritance of type; default/static methods allowed.
     // Q: Default method conflict? Must override and choose.
     static void demoAbstractInterfaceDefaultConflict() {
-        Shape c = new Circle(2);
-        Shape r = new Rectangle(3, 4);
-        System.out.println("Circle area=" + c.area() + ", Rectangle area=" + r.area());
+        Shape2 c = new Circle2(2);
+        Shape2 r = new Rectangle2(3, 4);
+        System.out.println("Circle2 area=" + c.area() + ", Rectangle2 area=" + r.area());
         DefaultConflict dc = new DefaultConflict();
         System.out.println("Default conflict resolved greet: " + dc.greet());
     }
 
     // Q: Covariant return types? A: Overriding method may return a subtype of original return type.
     static void demoCovariantReturn() {
-        Animal a = new Animal();
-        Dog d = new Dog();
-        Animal aCopy = a.copy();
-        Dog dCopy = d.copy(); // returns Dog, more specific
+        Animal2 a = new Animal2();
+        Dog2 d = new Dog2();
+        Animal2 aCopy = a.copy();
+        Dog2 dCopy = d.copy(); // returns Dog2, more specific
         System.out.println("Covariant copy types: " + aCopy.getClass().getSimpleName() + ", " + dCopy.getClass().getSimpleName());
     }
 
@@ -165,7 +165,7 @@ public class _03_InterviewQA {
     // Aggregation: has-a but weak ownership (objects can outlive container). Composition: strong ownership/lifecycle bound.
     static void demoAggregationVsComposition() {
         Player p = new Player("Alex");
-        Team team = new Team("Dream");
+        Team2 team = new Team2("Dream");
         team.addPlayer(p);
         System.out.println(team);
         team = null; // team eligible for GC; player p still exists (aggregation)
@@ -175,22 +175,22 @@ public class _03_InterviewQA {
         // Rooms do not make sense without House (composition)
     }
 
-    // Q: LSP violation example: Square extends Rectangle (bad inheritance).
-    // Functions that rely on Rectangle's setWidth/setHeight semantics break for Square.
-    static void demoLSPRectangleSquare() {
-        RectangleLSP rect = new RectangleLSP();
+    // Q: LSP violation example: Square extends Rectangle2 (bad inheritance).
+    // Functions that rely on Rectangle2's setWidth/setHeight semantics break for Square.
+    static void demoLSPRectangle2Square() {
+        Rectangle2LSP rect = new Rectangle2LSP();
         rect.setWidth(5);
         rect.setHeight(4);
-        System.out.println("Rectangle area expected 20: " + areaAfterResize(rect));
+        System.out.println("Rectangle2 area expected 20: " + areaAfterResize(rect));
 
-        RectangleLSP square = new SquareLSP();
+        Rectangle2LSP square = new SquareLSP();
         square.setWidth(5);
         square.setHeight(4); // forces width=height=4 in Square
         System.out.println("Square area NOT 20 (LSP break): " + areaAfterResize(square));
-        // Fix: use composition: Square has a side; no inheritance from Rectangle.
+        // Fix: use composition: Square has a side; no inheritance from Rectangle2.
     }
 
-    static int areaAfterResize(RectangleLSP r) {
+    static int areaAfterResize(Rectangle2LSP r) {
         r.setWidth(5);
         r.setHeight(4);
         return r.getArea();
@@ -256,18 +256,18 @@ public class _03_InterviewQA {
         // Generics are invariant:
         // List<String> ls = new ArrayList<>();
         // List<Object> lo = ls; // compile-time error
-        // Use wildcard to read-only:
+        // Use wildCar2d to read-only:
         List<String> ls = List.of("a", "b");
         List<?> lw = ls; // cannot add to lw (except null), but can read as Object
-        System.out.println("First via wildcard read: " + lw.get(0));
+        System.out.println("First via wildCar2d read: " + lw.get(0));
     }
 
     // Q: Deep vs Shallow copy in composition objects.
     static void demoDeepVsShallowCopy() {
         Address addr = new Address("NYC");
-        Person2 p1 = new Person2("Bob", addr);
-        Person2 shallow = p1.shallowCopy();
-        Person2 deep = p1.deepCopy();
+        Person22 p1 = new Person22("Bob", addr);
+        Person22 shallow = p1.shallowCopy();
+        Person22 deep = p1.deepCopy();
 
         addr.city = "LA"; // mutate shared component
         System.out.println("Shallow shares: " + shallow.address.city); // LA
@@ -284,55 +284,55 @@ public class _03_InterviewQA {
 
 /* ====== Basics: Inheritance/Composition demo types ====== */
 
-class Animal {
-    String type = "Animal";
-    static void staticInfo() { System.out.println("Animal.staticInfo"); }
-    void speak() { System.out.println("Animal speaks"); }
-    Animal copy() { return new Animal(); }
+class Animal2 {
+    String type = "Animal2";
+    static void staticInfo() { System.out.println("Animal2.staticInfo"); }
+    void speak() { System.out.println("Animal2 speaks"); }
+    Animal2 copy() { return new Animal2(); }
 }
 
-class Dog extends Animal {
-    String type = "Dog"; // field hiding, not overriding
-    static void staticInfo() { System.out.println("Dog.staticInfo"); }
-    @Override void speak() { System.out.println("Dog barks"); }
-    void speak(String prefix) { System.out.println(prefix + " Dog barks"); } // overload
-    void fetch() { System.out.println("Dog fetches"); }
-    @Override Dog copy() { return new Dog(); } // covariant return
+class Dog2 extends Animal2 {
+    String type = "Dog2"; // field hiding, not overriding
+    static void staticInfo() { System.out.println("Dog2.staticInfo"); }
+    @Override void speak() { System.out.println("Dog2 barks"); }
+    void speak(String prefix) { System.out.println(prefix + " Dog2 barks"); } // overload
+    void fetch() { System.out.println("Dog2 fetches"); }
+    @Override Dog2 copy() { return new Dog2(); } // covariant return
 }
 
-class Cat extends Animal {
-    @Override void speak() { System.out.println("Cat meows"); }
+class Cat2 extends Animal2 {
+    @Override void speak() { System.out.println("Cat2 meows"); }
 }
 
-class Engine {
-    void start() { System.out.println("Engine starting"); }
+class Engine2 {
+    void start() { System.out.println("Engine2 starting"); }
 }
 
-class Car {
-    private final Engine engine; // composition (HAS-A)
-    Car(Engine engine) { this.engine = engine; }
+class Car2 {
+    private final Engine2 Engine2; // composition (HAS-A)
+    Car2(Engine2 Engine2) { this.Engine2 = Engine2; }
     void drive() {
-        engine.start(); // delegation
-        System.out.println("Car driving");
+        Engine2.start(); // delegation
+        System.out.println("Car2 driving");
     }
 }
 
 /* ====== super/this, constructors, access, final ====== */
 
-class Person {
+class Person2 {
     protected final String name;
-    Person(String name) { this.name = name; }
-    @Override public String toString() { return "Person{name='" + name + "'}"; }
+    Person2(String name) { this.name = name; }
+    @Override public String toString() { return "Person2{name='" + name + "'}"; }
 }
 
-class Employee extends Person {
+class Employee2 extends Person2 {
     private final int id;
-    Employee(String name, int id) {
+    Employee2(String name, int id) {
         super(name); // call parent ctor
         this.id = id;
     }
     @Override public String toString() {
-        return "Employee{id=" + id + ", super=" + super.toString() + "}";
+        return "Employee2{id=" + id + ", super=" + super.toString() + "}";
     }
 }
 
@@ -348,19 +348,19 @@ class DerivedFromFinal extends BaseWithFinal {
 
 /* ====== Abstract classes, interfaces, default methods ====== */
 
-abstract class Shape {
+abstract class Shape2 {
     abstract double area();
 }
 
-class Circle extends Shape {
+class Circle2 extends Shape2 {
     final double r;
-    Circle(double r) { this.r = r; }
+    Circle2(double r) { this.r = r; }
     @Override double area() { return Math.PI * r * r; }
 }
 
-class Rectangle extends Shape {
+class Rectangle2 extends Shape2 {
     final double w, h;
-    Rectangle(double w, double h) { this.w = w; this.h = h; }
+    Rectangle2(double w, double h) { this.w = w; this.h = h; }
     @Override double area() { return w * h; }
 }
 
@@ -392,17 +392,17 @@ class InitDerived extends InitBase {
 
 /* ====== Aggregation vs Composition ====== */
 
-class Player {
+class PlayerEx {
     final String name;
-    Player(String name) { this.name = name; }
+    PlayerEx(String name) { this.name = name; }
     @Override public String toString() { return name; }
 }
-class Team {
+class Team2 {
     final String name;
     final List<Player> players = new ArrayList<>();
-    Team(String name) { this.name = name; }
+    Team2(String name) { this.name = name; }
     void addPlayer(Player p) { players.add(p); }
-    @Override public String toString() { return "Team{" + name + ", players=" + players + "}"; }
+    @Override public String toString() { return "Team2{" + name + ", players=" + players + "}"; }
 }
 class House {
     final String name;
@@ -418,15 +418,15 @@ class House {
     }
 }
 
-/* ====== LSP: Rectangle/Square problem ====== */
+/* ====== LSP: Rectangle2/Square problem ====== */
 
-class RectangleLSP {
+class Rectangle2LSP {
     protected int width, height;
     void setWidth(int w) { width = w; }
     void setHeight(int h) { height = h; }
     int getArea() { return width * height; }
 }
-class SquareLSP extends RectangleLSP {
+class SquareLSP extends Rectangle2LSP {
     @Override void setWidth(int w) { width = height = w; }
     @Override void setHeight(int h) { width = height = h; }
 }
@@ -599,12 +599,12 @@ class Address {
     Address(Address other) { this.city = other.city; } // shallow field copy (OK because String is immutable)
 }
 
-class Person2 {
+class Person22 {
     String name;
     Address address;
-    Person2(String name, Address address) { this.name = name; this.address = address; }
-    Person2 shallowCopy() { return new Person2(this.name, this.address); }
-    Person2 deepCopy() { return new Person2(this.name, new Address(this.address.city)); }
+    Person22(String name, Address address) { this.name = name; this.address = address; }
+    Person22 shallowCopy() { return new Person22(this.name, this.address); }
+    Person22 deepCopy() { return new Person22(this.name, new Address(this.address.city)); }
 }
 
 /* ====== Fluent API with self types (CRTP) ====== */

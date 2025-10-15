@@ -245,7 +245,7 @@ public class _03_InterviewQA {
             .exceptionally(e -> {
                 log("exceptionally saw: " + e.getClass().getSimpleName());
                 return "fallback";
-            }).join();
+            }).join().toString();
         log("exceptionally result = " + v1);
 
         // handle
@@ -325,7 +325,7 @@ public class _03_InterviewQA {
     static void q11_cancellation_and_propagation() {
         log("Q11: cancellation");
         CompletableFuture<String> cancelMe = CompletableFuture.supplyAsync(() -> { sleep(200); return "done"; });
-        CompletableFuture<Void> observer = cancelMe.whenComplete((v, e) -> log("observer: v=" + v + ", e=" + e));
+        CompletableFuture<String> observer = cancelMe.whenComplete((v, e) -> log("observer: v=" + v + ", e=" + e));
         sleep(40);
         boolean cancelled = cancelMe.cancel(true);
         log("cancelled = " + cancelled);
@@ -436,10 +436,10 @@ public class _03_InterviewQA {
      */
     static void q17_completedFuture_seeding_pipelines() {
         log("Q17: completedFuture");
-        String result = CompletableFuture.completedFuture(10)
+        String result = String.valueOf(CompletableFuture.completedFuture(10)
             .thenApply(x -> x + 5)
             .thenCompose(x -> CompletableFuture.supplyAsync(() -> x * 2))
-            .join();
+            .join());
         log("completedFuture seeded result = " + result);
     }
 

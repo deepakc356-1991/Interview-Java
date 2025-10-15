@@ -51,17 +51,17 @@ public class _02_Examples {
 
         // Example 3: Composition (has-a), static factories, equals/hashCode, deep copy
         System.out.println("\n[Example 3] Composition, static factory, equals/hashCode, deep copy");
-        Person ada = Person.of("Ada", 30).moveTo(new Address("1 Main", "New York", "USA"));
-        Person ada2 = Person.of("Ada", 30).moveTo(new Address("1 Main", "New York", "USA"));
+        Person2 ada = Person2.of("Ada", 30).moveTo(new Address2("1 Main", "New York", "USA"));
+        Person2 ada2 = Person2.of("Ada", 30).moveTo(new Address2("1 Main", "New York", "USA"));
         System.out.println("ada.equals(ada2)? " + ada.equals(ada2));
         System.out.println("ada == ada2? " + (ada == ada2));
         System.out.println("ada hashCode=" + ada.hashCode() + ", ada2 hashCode=" + ada2.hashCode());
 
         // Deep copy via copy constructor
-        Person adaCopy = new Person(ada);
-        ada.getAddress().setCity("Boston"); // mutate original person's address
-        System.out.println("ada.address.city = " + ada.getAddress().getCity());
-        System.out.println("adaCopy.address.city (deep copy unaffected) = " + adaCopy.getAddress().getCity());
+        Person2 adaCopy = new Person2(ada);
+        ada.getAddress2().setCity("Boston"); // mutate original person's address
+        System.out.println("ada.address.city = " + ada.getAddress2().getCity());
+        System.out.println("adaCopy.address.city (deep copy unaffected) = " + adaCopy.getAddress2().getCity());
 
         // Example 4: Initialization order: static block -> instance block -> constructor
         System.out.println("\n[Example 4] Initialization order");
@@ -70,17 +70,17 @@ public class _02_Examples {
 
         // Example 5: Inner class vs static nested class
         System.out.println("\n[Example 5] Inner class vs static nested class");
-        Outer outer = new Outer();
-        Outer.Inner inner = outer.new Inner(); // needs an instance of Outer
-        System.out.println("Inner sumWithOuter(5) = " + inner.sumWithOuter(5));
-        System.out.println("Outer.Nested.times2(7) = " + Outer.Nested.times2(7)); // static on nested class
-        Outer.Nested nestedInstance = new Outer.Nested(); // can create without Outer instance
+        Outer2 outer = new Outer2();
+        Outer2.Inner inner = outer.new Inner(); // needs an instance of Outer2
+        System.out.println("Inner sumWithOuter2(5) = " + inner.sumWithOuter2(5));
+        System.out.println("Outer2.Nested.times2(7) = " + Outer2.Nested.times2(7)); // static on nested class
+        Outer2.Nested nestedInstance = new Outer2.Nested(); // can create without Outer2 instance
         System.out.println("nestedInstance.triple(3) = " + nestedInstance.triple(3));
 
         // Example 6: Immutable class
         System.out.println("\n[Example 6] Immutable class");
-        ImmutablePoint p = new ImmutablePoint(1, 2);
-        ImmutablePoint p2 = p.moveBy(5, -1);
+        ImmutablePoint2 p = new ImmutablePoint2(1, 2);
+        ImmutablePoint2 p2 = p.moveBy(5, -1);
         System.out.println("p = " + p + ", p2 = " + p2); // original p unchanged
 
         // Example 7: Fluent API (method chaining returning this)
@@ -93,7 +93,7 @@ public class _02_Examples {
 
         // Example 8: Null checks with references
         System.out.println("\n[Example 8] Null reference check");
-        Person maybeNull = null;
+        Person2 maybeNull = null;
         if (maybeNull == null) {
             System.out.println("maybeNull is null; avoid calling methods.");
         }
@@ -288,24 +288,24 @@ class BankAccount {
 }
 
 /*
-    Address:
-    - Simple value object used by Person (composition)
+    Address2:
+    - Simple value object used by Person2 (composition)
     - Implements equals and hashCode for deep comparisons
     - Copy constructor for deep copying
 */
-class Address {
+class Address2 {
     private String street;
     private String city;
     private String country;
 
-    public Address(String street, String city, String country) {
+    public Address2(String street, String city, String country) {
         this.street = street;
         this.city = city;
         this.country = country;
     }
 
     // Copy constructor (deep copy for value fields)
-    public Address(Address other) {
+    public Address2(Address2 other) {
         this(other.street, other.city, other.country);
     }
 
@@ -321,8 +321,8 @@ class Address {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Address)) return false;
-        Address that = (Address) o;
+        if (!(o instanceof Address2)) return false;
+        Address2 that = (Address2) o;
         return java.util.Objects.equals(street, that.street)
                 && java.util.Objects.equals(city, that.city)
                 && java.util.Objects.equals(country, that.country);
@@ -340,52 +340,52 @@ class Address {
 }
 
 /*
-    Person:
-    - Composition (has-a Address)
+    Person2:
+    - Composition (has-a Address2)
     - Static factory method 'of'
     - Equals and hashCode based on significant fields
     - Deep copy via copy constructor
     - Fluent instance method returning 'this'
 */
-class Person {
+class Person2 {
     private String name;
     private int age;
-    private Address address; // composition
+    private Address2 address; // composition
 
-    public Person(String name, int age, Address address) {
+    public Person2(String name, int age, Address2 address) {
         this.name = name;
         this.age = age;
-        this.address = address; // reference to an Address (object graph)
+        this.address = address; // reference to an Address2 (object graph)
     }
 
     // Copy constructor (deep copy for address)
-    public Person(Person other) {
+    public Person2(Person2 other) {
         this(
                 other.name,
                 other.age,
-                other.address != null ? new Address(other.address) : null
+                other.address != null ? new Address2(other.address) : null
         );
     }
 
-    public static Person of(String name, int age) {
-        return new Person(name, age, null);
+    public static Person2 of(String name, int age) {
+        return new Person2(name, age, null);
     }
 
     // Fluent method returns 'this' to allow chaining
-    public Person moveTo(Address newAddress) {
-        this.address = newAddress;
+    public Person2 moveTo(Address2 newAddress2) {
+        this.address = newAddress2;
         return this;
     }
 
     public String getName() { return name; }
     public int getAge() { return age; }
-    public Address getAddress() { return address; }
+    public Address2 getAddress2() { return address; }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Person)) return false;
-        Person that = (Person) o;
+        if (!(o instanceof Person2)) return false;
+        Person2 that = (Person2) o;
         return age == that.age
                 && java.util.Objects.equals(name, that.name)
                 && java.util.Objects.equals(address, that.address);
@@ -398,7 +398,7 @@ class Person {
 
     @Override
     public String toString() {
-        return "Person{name='" + name + "', age=" + age +
+        return "Person2{name='" + name + "', age=" + age +
                 ", address=" + (address == null ? "<none>" : address) + '}';
     }
 }
@@ -431,16 +431,16 @@ class InitDemo {
 }
 
 /*
-    Outer and nested types:
-    - Inner (non-static): has access to Outer instance members
-    - Nested (static): independent of any Outer instance
+    Outer2 and nested types:
+    - Inner (non-static): has access to Outer2 instance members
+    - Nested (static): independent of any Outer2 instance
 */
-class Outer {
+class Outer2 {
     private int x = 10;
 
     class Inner {
-        int sumWithOuter(int y) {
-            // Can access Outer.this.x
+        int sumWithOuter2(int y) {
+            // Can access Outer2.this.x
             return x + y;
         }
     }
@@ -452,15 +452,15 @@ class Outer {
 }
 
 /*
-    ImmutablePoint:
+    ImmutablePoint2:
     - Immutable class: fields are private final, no setters
     - "Mutating" operations return new instances
 */
-final class ImmutablePoint {
+final class ImmutablePoint2 {
     private final int x;
     private final int y;
 
-    public ImmutablePoint(int x, int y) {
+    public ImmutablePoint2(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -468,13 +468,13 @@ final class ImmutablePoint {
     public int getX() { return x; }
     public int getY() { return y; }
 
-    public ImmutablePoint moveBy(int dx, int dy) {
-        return new ImmutablePoint(x + dx, y + dy);
+    public ImmutablePoint2 moveBy(int dx, int dy) {
+        return new ImmutablePoint2(x + dx, y + dy);
     }
 
     @Override
     public String toString() {
-        return "ImmutablePoint(" + x + ", " + y + ")";
+        return "ImmutablePoint2(" + x + ", " + y + ")";
     }
 }
 

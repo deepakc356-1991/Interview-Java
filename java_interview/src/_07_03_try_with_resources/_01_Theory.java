@@ -142,7 +142,7 @@ public class _01_Theory {
             try (DemoResource r = maybeNull(true)) {
                 System.out.println("Body ran; resource was null");
             }
-        } catch (NullPointerException npe) {
+        } catch (Exception npe) {
             System.out.println("Caught NPE while closing null resource");
         }
     }
@@ -255,11 +255,18 @@ public class _01_Theory {
         System.out.println("\n-- Suppression disabled on primary exception --");
         try {
             try (DemoResource r = new DemoResource("R", true, false)) {
-                throw new Exception("primary (suppression disabled)", null, false, true);
+                throw new NoSuppressionException("primary (suppression disabled)");
             }
         } catch (Exception e) {
             System.out.println("Caught: " + e);
             printSuppressed(e); // Expect 0
+        }
+    }
+
+    // define once
+    public static final class NoSuppressionException extends Exception {
+        public NoSuppressionException(String message) {
+            super(message, null, false, true); // enableSuppression=false, writableStackTrace=true
         }
     }
 

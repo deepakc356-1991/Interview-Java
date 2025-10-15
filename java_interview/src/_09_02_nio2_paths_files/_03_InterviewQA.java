@@ -492,7 +492,7 @@ public class _03_InterviewQA {
 
     /*
     Q: How to match paths with glob/regex?
-    A: Use FileSystem.getPathMatcher with "glob:" or "regex:". Example "glob:**/*.txt".
+    A: Use FileSystem.getPathMatcher with "glob:" or "regex:". Example "glob:/.txt".
     */
     private static void qa_pathMatcher(Path demo) throws IOException {
         Path dir = demo.resolve("match");

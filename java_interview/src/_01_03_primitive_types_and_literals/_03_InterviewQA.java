@@ -272,7 +272,7 @@ public class _03_InterviewQA {
         System.out.println("Character.isSupplementaryCodePoint? " + Character.isSupplementaryCodePoint(codePoint));
 
         title("Unicode escapes processed before tokenization (pitfall)");
-        // Example (do not do this): "\u000A" is a newline inserted before parsing; can break code.
+        // Example (do not do this): "\\u000A" is a newline inserted before parsing; can break code.
         // String s = "Hello"; \u000A System.out.println("This is on a new line due to unicode escape");
         System.out.println("Unicode escapes like \\u000A become a newline before parsing (be careful).");
         line();

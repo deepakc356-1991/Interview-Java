@@ -46,7 +46,7 @@ Concepts at a glance:
   - Program to interfaces; hide implementations.
   - Prefer composition (interfaces) over inheritance when possible.
   - Use abstract classes when sharing state/implementation/template methods is valuable.
-  - Avoid the "constant interface" anti-pattern; prefer a dedicated class or enum for constants.
+  - Avoid the "constant interface" antipattern; prefer a dedicated class or enum for constants.
 
 Run the main method to see examples printed.
 */
@@ -113,7 +113,7 @@ public class _01_Theory {
         }
 
         // Sealed types: only permitted classes can implement Pet
-        Pet p = dog; // Dog is a permitted implementor of Pet
+        Pet p = (Pet) dog; // Dog is a permitted implementor of Pet
         System.out.println("Pet kind = " + p.kind());
 
         // Pattern matching for instanceof (Java 16+)

@@ -301,8 +301,8 @@ public class _02_Examples {
 
     // 9) Forward references (textual order matters for static fields)
     static class Forward {
-        static int A = B + 1; // B is 0 here (default) because B's initializer hasn't run yet
         static int B = 2;
+        static int A = B + 1; // B is 0 here (default) because B's initializer hasn't run yet
     }
 
     // 10) Varargs constructor

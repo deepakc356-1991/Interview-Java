@@ -143,8 +143,8 @@ public class _02_Examples {
     }
 
     static class InitOrder {
-        static int a = printAndGive("setting a (b currently " + b + " due to default before init)", 1);
         static int b = printAndGive("setting b", 2);
+        static int a = printAndGive("setting a (b currently " + b + " due to default before init)", 1);
 
         static {
             System.out.println("  [InitOrder] static block (a=" + a + ", b=" + b + ")");
@@ -520,7 +520,7 @@ public class _02_Examples {
         try (Formatter f = new Formatter(sb, Locale.ROOT)) {
             f.format("%s: %s:%d:%d %s",
                     d.getKind(),
-                    d.getSource() != null ? d.getSource().getName() : "<no-source>",
+                    d.getSource() != null ? d.getSource().getClass() : "<no-source>",
                     d.getLineNumber(), d.getColumnNumber(),
                     d.getMessage(Locale.ROOT));
         }

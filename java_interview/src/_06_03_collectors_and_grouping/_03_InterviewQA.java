@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.EnumMap;
+import java.util.EnumMap;
 import java.util.function.*;
 import java.util.stream.*;
 

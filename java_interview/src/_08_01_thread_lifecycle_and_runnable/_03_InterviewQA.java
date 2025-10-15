@@ -58,7 +58,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
  Q: Why Executors over new Thread?
  A: Thread management, pooling, throttling, task submission, futures, lifecycle control.
-
+**/
 
 public class _03_InterviewQA {
 

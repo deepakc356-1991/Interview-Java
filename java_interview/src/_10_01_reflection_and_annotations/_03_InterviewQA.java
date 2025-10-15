@@ -107,7 +107,7 @@ The rest of this file demonstrates the above with runnable examples and inline c
 */
 public class _03_InterviewQA {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Throwable {
         println("=== Reflection & Annotations Interview Q&A Demo ===");
 
         showClassObjectWays();

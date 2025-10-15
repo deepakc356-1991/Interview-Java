@@ -70,7 +70,7 @@ import static java.lang.Math.*;    // Static import brings static members (e.g.,
  * - Classpath locates compiled classes/jars. Modules (module-info.java) add stronger boundaries (beyond scope here).
  *
  * Documentation:
- * - Use Javadoc comments (/** ... */) on public APIs. Generate with: javadoc ...
+ * - Use Javadoc comments (/** ... /) on public APIs. Generate with: javadoc ...
  *
  * Notes:
  * - This file demonstrates many concepts; in real projects split code into multiple small cohesive classes/files.

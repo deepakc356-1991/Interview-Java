@@ -33,20 +33,20 @@ public class _01_Theory {
         System.out.println("== Encapsulation & Access Modifiers demo ==");
 
         // 1) No encapsulation: public fields (bad)
-        BadPerson bp = new BadPerson();
+        BadPerson1 bp = new BadPerson1();
         bp.name = "Alice";
         bp.age = -10; // breaks invariant
-        System.out.println("BadPerson allows invalid age: " + bp.age);
+        System.out.println("BadPerson1 allows invalid age: " + bp.age);
 
         // 2) Encapsulated: private fields + validation
-        Person p = new Person(1L, "Bob", 20);
+        Person1 p = new Person1(1L, "Bob", 20);
         try {
             p.setAge(-5); // throws
         } catch (IllegalArgumentException e) {
             System.out.println("Validation stopped invalid age: " + e.getMessage());
         }
         p.setAge(21);
-        System.out.println("Person after valid change: " + p);
+        System.out.println("Person1 after valid change: " + p);
 
         // 3) Privacy leak with collections and the fix
         TeamWithLeak tl = new TeamWithLeak();
@@ -55,7 +55,7 @@ public class _01_Theory {
 
         TeamWithDefensiveCopies ts = new TeamWithDefensiveCopies(Arrays.asList(p));
         try {
-            ts.getMembers().add(new Person(2L, "Carol", 30)); // throws
+            ts.getMembers().add(new Person1(2L, "Carol", 30)); // throws
         } catch (UnsupportedOperationException e) {
             System.out.println("Unmodifiable view prevents external add.");
         }
@@ -72,9 +72,9 @@ public class _01_Theory {
         PeerInSamePackage.demonstrate();
 
         // 6) Nested classes can access outer's private members
-        Outer outer = new Outer();
-        Outer.StaticNested sn = new Outer.StaticNested();
-        Outer.Inner in = outer.new Inner();
+        Outer1 outer = new Outer1();
+        Outer1.StaticNested sn = new Outer1.StaticNested();
+        Outer1.Inner in = outer.new Inner();
         System.out.println("StaticNested reveal: " + sn.reveal(outer));
         System.out.println("Inner reveal: " + in.reveal());
 
@@ -117,7 +117,7 @@ public class _01_Theory {
 /**
  * Anti-pattern: public fields expose representation. No invariants are enforced.
  */
-class BadPerson {
+class BadPerson1 {
     public String name;
     public int age;
 }
@@ -130,12 +130,12 @@ class BadPerson {
  * - validation in constructor and setter
  * - no setter for id to keep identity stable
  */
-class Person {
+class Person1 {
     private final long id;
     private String name;
     private int age;
 
-    public Person(long id, String name, int age) {
+    public Person1(long id, String name, int age) {
         if (name == null || name.trim().isEmpty()) throw new IllegalArgumentException("name required");
         if (age < 0) throw new IllegalArgumentException("age must be >= 0");
         this.id = id;
@@ -160,7 +160,7 @@ class Person {
     }
 
     @Override public String toString() {
-        return "Person{id=" + id + ", name='" + name + "', age=" + age + "}";
+        return "Person1{id=" + id + ", name='" + name + "', age=" + age + "}";
     }
 }
 
@@ -168,14 +168,14 @@ class Person {
  * Privacy leak: returning internal, mutable collection allows callers to mutate your state.
  */
 class TeamWithLeak {
-    private final List<Person> members = new ArrayList<>();
+    private final List<Person1> members = new ArrayList<>();
 
-    public List<Person> getMembers() {
+    public List<Person1> getMembers() {
         // BAD: exposes internal list; callers can add/remove directly.
         return members;
     }
 
-    public void addMember(Person p) {
+    public void addMember(Person1 p) {
         if (p == null) throw new IllegalArgumentException("member required");
         members.add(p);
     }
@@ -183,22 +183,22 @@ class TeamWithLeak {
 
 /**
  * Fix: defensive copy on input; unmodifiable view on output.
- * Note: The list is unmodifiable, but Person objects inside are still mutable.
+ * Note: The list is unmodifiable, but Person1 objects inside are still mutable.
  * Deep immutability would require immutable element type as well.
  */
 class TeamWithDefensiveCopies {
-    private final List<Person> members;
+    private final List<Person1> members;
 
-    public TeamWithDefensiveCopies(List<Person> initialMembers) {
+    public TeamWithDefensiveCopies(List<Person1> initialMembers) {
         if (initialMembers == null) throw new IllegalArgumentException("list required");
         this.members = new ArrayList<>(initialMembers); // defensive copy
     }
 
-    public List<Person> getMembers() {
+    public List<Person1> getMembers() {
         return Collections.unmodifiableList(members); // read-only view
     }
 
-    public void addMember(Person p) {
+    public void addMember(Person1 p) {
         if (p == null) throw new IllegalArgumentException("member required");
         members.add(p);
     }
@@ -305,11 +305,11 @@ class SubclassInSamePackage extends AccessShowcase {
 /**
  * Nested classes and access to outer private members.
  */
-class Outer {
+class Outer1 {
     private int secret = 123;
 
     static class StaticNested {
-        int reveal(Outer o) {
+        int reveal(Outer1 o) {
             // static nested class can access private via the instance provided
             return o.secret;
         }
@@ -317,7 +317,7 @@ class Outer {
 
     class Inner {
         int reveal() {
-            // inner class implicitly holds a reference to Outer.this
+            // inner class implicitly holds a reference to Outer1.this
             return secret;
         }
     }

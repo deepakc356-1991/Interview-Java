@@ -183,7 +183,10 @@ public class _01_Theory {
         // Here we collect distinct cities sorted lexicographically.
         Set<String> sortedCities = PEOPLE.stream()
                 .map(Person::city)
-                .collect(Collectors.toCollection(() -> new java.util.TreeSet<>(Comparator.naturalOrder())));
+                .collect(Collectors.toCollection(
+                        () -> new java.util.TreeSet<String>(Comparator.<String>naturalOrder())
+                ));
+
         System.out.println("sortedCities=" + sortedCities);
     }
 

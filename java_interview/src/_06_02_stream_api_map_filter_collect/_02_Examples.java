@@ -21,6 +21,10 @@ public class _02_Examples {
         peekDebugging();
     }
 
+    private static void advancedCollectExamples() {
+
+    }
+
     // Sample data
     private static final List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 2, 4, 6);
     private static final List<String> words = Arrays.asList("stream", "api", "map", "filter", "collect", "", " ", "JAVA", "java", "stream");

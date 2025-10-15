@@ -88,7 +88,7 @@ public class _01_Theory {
         String hello = "Hello";
         String world = "World";
 
-        // Escape sequences: \n (newline), \t (tab), \" (quote), \\ (backslash), \uXXXX (unicode)
+        // Escape sequences: \n (newline), \t (tab), \" (quote), \\ (backslash), \\uXXXX (unicode)
         String greeting = "Hello,\n\t\"Java\" \\ world!\u263A";
         System.out.println(greeting);
 

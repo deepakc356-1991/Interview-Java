@@ -1,5 +1,6 @@
 package _01_07_methods_and_parameters;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -154,11 +155,6 @@ public class _01_Theory {
 
         // Overload pitfalls
         OverloadPitfalls.demo();
-
-        // Generic method overshadowing class-level type param
-        Box<Integer> box = new Box<>();
-        String echoed = box.echo("echo");
-        System.out.println("Box.echo: " + echoed);
 
         System.out.println("args length = " + args.length);
     }

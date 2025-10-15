@@ -295,9 +295,16 @@ public class _01_Theory {
                 return computed;
             } finally {
                 // Ensure the read lock acquired during downgrade is released
-                if (((ReentrantReadWriteLock.ReadLock) r).getHoldCount() > 0) {
+                ReentrantReadWriteLock rw = new ReentrantReadWriteLock() /* the same lock that produced r */;
+                Lock r = rw.readLock();
+
+                // If you only want to unlock when *this thread* holds the read lock:
+                if (rw.getReadHoldCount() > 0) {
                     r.unlock();
                 }
+
+                // (If you meant “any readers at all exist”, use rw.getReadLockCount() > 0)
+
             }
         }
     }

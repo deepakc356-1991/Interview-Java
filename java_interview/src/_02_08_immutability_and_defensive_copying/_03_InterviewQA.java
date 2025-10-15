@@ -344,8 +344,8 @@ public class _03_InterviewQA {
         public Report {
             Objects.requireNonNull(data);
             Objects.requireNonNull(tags);
-            this.data = data.clone();          // copy IN
-            this.tags = List.copyOf(tags);     // unmodifiable snapshot
+            data = data.clone();          // copy IN
+            tags = List.copyOf(tags);     // unmodifiable snapshot
         }
         // Accessors data() and tags() return components; both are safe (array not exposed directly)
         // If you expose array directly, callers could mutate it; keep it private or return a copy.

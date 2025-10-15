@@ -13,14 +13,14 @@ Key ideas:
 - Polymorphism: a single reference type (e.g., base class or interface) can point to objects of different concrete types. Method calls are resolved at runtime (dynamic dispatch).
 - Overriding: subclass provides its own implementation of a superclass or interface method (same signature, covariant return allowed).
 - Overloading vs Overriding: overloading chooses method by compile-time parameter types; overriding chooses by runtime object type.
-- Virtual method invocation: non-private, non-static, non-final instance methods are virtual (dispatched at runtime).
+- Virtual method invoCat1ion: non-private, non-static, non-final instance methods are virtual (dispatched at runtime).
 - static, private methods and fields are not polymorphic (static methods are hidden, private methods are not overridden, fields are hidden).
 - Rules for overriding:
   - Same name and parameter types (signature).
   - Return type must be the same or covariant (a subclass of the original return type).
   - Access level cannot be reduced (can be widened).
   - Overriding method cannot throw broader checked exceptions; may throw narrower or unchecked exceptions.
-  - Use @Override to catch mistakes.
+  - Use @Override to Cat1ch mistakes.
 - Upcasting is implicit and safe; downcasting requires explicit cast and may throw ClassCastException (use instanceof).
 - Interfaces: default methods can be overridden; multiple-inheritance conflicts must be resolved explicitly.
 - Abstract method must be implemented by concrete subclasses, otherwise the subclass remains abstract.
@@ -32,27 +32,27 @@ Key ideas:
 public class _01_Theory {
     public static void main(String[] args) {
         System.out.println("=== 1) Basic runtime polymorphism (dynamic dispatch) ===");
-        Animal a1 = new Dog();      // upcast (implicit)
-        Animal a2 = new Cat();
+        Animal1 a1 = new Dog1();      // upcast (implicit)
+        Animal1 a2 = new Cat1();
 
-        System.out.println("a1.speak -> " + a1.speak()); // Dog version chosen at runtime
-        System.out.println("a2.speak -> " + a2.speak()); // Cat version chosen at runtime
+        System.out.println("a1.speak -> " + a1.speak()); // Dog1 version chosen at runtime
+        System.out.println("a2.speak -> " + a2.speak()); // Cat1 version chosen at runtime
         System.out.println("a1.move  -> " + a1.move());
         System.out.println("a2.move  -> " + a2.move());
-        System.out.println("a1.toString -> " + a1);      // toString overridden in Dog
+        System.out.println("a1.toString -> " + a1);      // toString overridden in Dog1
 
         System.out.println("\n=== 2) super keyword (call overridden implementation) ===");
-        Dog dog = new Dog();
-        System.out.println("Dog.speak (includes super): " + dog.speak());
+        Dog1 Dog1 = new Dog1();
+        System.out.println("Dog1.speak (includes super): " + Dog1.speak());
 
         System.out.println("\n=== 3) Upcasting and Downcasting ===");
-        Animal upcast = new Dog(); // upcast is safe
-        if (upcast instanceof Dog) {
-            Dog castedDog = (Dog) upcast; // downcast
-            System.out.println("Downcast OK: " + castedDog.fetch());
+        Animal1 upcast = new Dog1(); // upcast is safe
+        if (upcast instanceof Dog1) {
+            Dog1 castedDog1 = (Dog1) upcast; // downcast
+            System.out.println("Downcast OK: " + castedDog1.fetch());
         }
         try {
-            Cat wrong = (Cat) upcast; // runtime error (ClassCastException)
+            Cat1 wrong = (Cat1) upcast; // runtime error (ClassCastException)
             System.out.println(wrong);
         } catch (ClassCastException ex) {
             System.out.println("Wrong downcast -> " + ex.getClass().getSimpleName());
@@ -60,9 +60,9 @@ public class _01_Theory {
 
         System.out.println("\n=== 4) Overloading vs Overriding ===");
         OverloadDemo od = new OverloadDemo();
-        Animal animalRefToDog = new Dog();
-        od.foo(animalRefToDog);     // chooses foo(Animal) at compile time (by variable type)
-        od.foo((Dog) animalRefToDog); // chooses foo(Dog), because parameter type is Dog at compile time
+        Animal1 Animal1RefToDog1 = new Dog1();
+        od.foo(Animal1RefToDog1);     // chooses foo(Animal1) at compile time (by variable type)
+        od.foo((Dog1) Animal1RefToDog1); // chooses foo(Dog1), because parameter type is Dog1 at compile time
 
         System.out.println("\n=== 5) static methods are hidden, not overridden ===");
         StaticBase baseRef = new StaticChild();
@@ -88,11 +88,11 @@ public class _01_Theory {
         }
 
         System.out.println("\n=== 9) Covariant return types ===");
-        Printer printer = new DogPrinter();
-        Animal created = printer.create();                 // actually a Dog
+        Printer printer = new Dog1Printer();
+        Animal1 created = printer.create();                 // actually a Dog1
         System.out.println("Printer.create returned: " + created.getClass().getSimpleName());
-        Dog dogCreated = ((DogPrinter) printer).create();  // covariant return lets us use Dog at compile-time in subclass
-        System.out.println("DogPrinter.create (Dog) -> " + dogCreated.getClass().getSimpleName());
+        Dog1 Dog1Created = ((Dog1Printer) printer).create();  // covariant return lets us use Dog1 at compile-time in subclass
+        System.out.println("Dog1Printer.create (Dog1) -> " + Dog1Created.getClass().getSimpleName());
 
         System.out.println("\n=== 10) Interface default method conflicts must be resolved ===");
         Athlete athlete = new Athlete();
@@ -131,80 +131,80 @@ public class _01_Theory {
         // class FinalChild extends FinalBase { @Override void cannotOverride() {} } // <- illegal to compile
 
         System.out.println("\n=== 16) Constructor chaining (not overriding) ===");
-        Bulldog bulldog = new Bulldog(); // Observe printed constructor order
-        System.out.println("Bulldog.speak -> " + bulldog.speak());
+        BullDog1 bullDog1 = new BullDog1(); // Observe printed constructor order
+        System.out.println("BullDog1.speak -> " + bullDog1.speak());
 
-        System.out.println("\nLiskov Substitution Principle (LSP): anywhere an Animal is expected, a Dog/Cat should work without breaking behavior assumptions. Violating LSP leads to fragile polymorphism.");
+        System.out.println("\nLiskov Substitution Principle (LSP): anywhere an Animal1 is expected, a Dog1/Cat1 should work without breaking behavior assumptions. Violating LSP leads to fragile polymorphism.");
     }
 }
 
 /* ============================
    1) Base hierarchy for runtime polymorphism
    ============================ */
-class Animal {
-    public Animal() {
-        System.out.println("Constructing Animal");
+class Animal1 {
+    public Animal1() {
+        System.out.println("Constructing Animal1");
     }
 
     public String speak() {
-        return "generic animal sound";
+        return "generic Animal1 sound";
     }
 
     public String move() {
-        return "animal moves";
+        return "Animal1 moves";
     }
 }
 
-class Dog extends Animal {
-    public Dog() {
-        System.out.println("Constructing Dog");
+class Dog1 extends Animal1 {
+    public Dog1() {
+        System.out.println("Constructing Dog1");
     }
 
     @Override
     public String speak() {
         // Calls super to demonstrate chaining; not required in normal overriding
-        return "dog barks; also " + super.speak();
+        return "Dog1 barks; also " + super.speak();
     }
 
     @Override
     public String move() {
-        return "dog runs";
+        return "Dog1 runs";
     }
 
     public String fetch() {
-        return "dog fetches a ball";
+        return "Dog1 fetches a ball";
     }
 
     @Override
     public String toString() {
-        return "Dog{}";
+        return "Dog1{}";
     }
 }
 
-class Cat extends Animal {
-    public Cat() {
-        System.out.println("Constructing Cat");
+class Cat1 extends Animal1 {
+    public Cat1() {
+        System.out.println("Constructing Cat1");
     }
 
     @Override
     public String speak() {
-        return "cat meows";
+        return "Cat1 meows";
     }
 
     @Override
     public String move() {
-        return "cat stalks";
+        return "Cat1 stalks";
     }
 }
 
-class Bulldog extends Dog {
-    public Bulldog() {
-        System.out.println("Constructing Bulldog");
+class BullDog1 extends Dog1 {
+    public BullDog1() {
+        System.out.println("Constructing BullDog1");
     }
 
     @Override
     public String speak() {
-        return "bulldog gruffs";
+        return "bullDog1 gruffs";
     }
 }
 
@@ -212,12 +212,12 @@ class Bulldog extends Dog {
    2) Overloading vs Overriding
    ============================ */
 class OverloadDemo {
-    void foo(Animal a) {
-        System.out.println("OverloadDemo.foo(Animal)");
+    void foo(Animal1 a) {
+        System.out.println("OverloadDemo.foo(Animal1)");
     }
 
-    void foo(Dog d) {
-        System.out.println("OverloadDemo.foo(Dog)");
+    void foo(Dog1 d) {
+        System.out.println("OverloadDemo.foo(Dog1)");
     }
 }
 
@@ -270,14 +270,14 @@ class AccessChild extends AccessBase {
    - It may throw fewer/narrower checked exceptions.
    ============================ */
 class ThrowsBase {
-    public Animal risky() throws IOException {
-        return new Animal();
+    public Animal1 risky() throws IOException {
+        return new Animal1();
     }
 }
 
 class ThrowsChild extends ThrowsBase {
     @Override
-    public Animal risky() throws FileNotFoundException { // narrower than IOException
+    public Animal1 risky() throws FileNotFoundException { // narrower than IOException
         throw new FileNotFoundException("Simulated narrow checked exception");
     }
 }
@@ -286,15 +286,15 @@ class ThrowsChild extends ThrowsBase {
    7) Covariant return types
    ============================ */
 class Printer {
-    public Animal create() {
-        return new Animal();
+    public Animal1 create() {
+        return new Animal1();
     }
 }
 
-class DogPrinter extends Printer {
+class Dog1Printer extends Printer {
     @Override
-    public Dog create() { // covariant return
-        return new Dog();
+    public Dog1 create() { // covariant return
+        return new Dog1();
     }
 }
 
@@ -372,9 +372,11 @@ class Person {
 /* ============================
    11) Generics + overriding (bridge method concept)
    ============================ */
-class Box<T> {
+class Box<T> extends javax.swing.Box {
     private final T value;
-    Box(T value) { this.value = value; }
+    Box(T value) {
+        super(1);
+        this.value = value; }
     public T get() { return value; }
 }
 

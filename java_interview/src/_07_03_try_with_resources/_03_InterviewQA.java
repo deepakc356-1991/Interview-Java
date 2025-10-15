@@ -32,7 +32,7 @@ import java.util.Arrays;
  */
 public class _03_InterviewQA {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DemoResource.UseFailException {
         header("1) Basics: What is try-with-resources?");
         basics();
 
@@ -214,7 +214,7 @@ public class _03_InterviewQA {
      - Use try-finally with careful exception handling and manual suppression.
      - The compiler translates TWR roughly like this pattern.
      */
-    private static void preJava7EquivalentPattern() {
+    private static void preJava7EquivalentPattern() throws DemoResource.UseFailException {
         DemoResource r1 = null;
         Throwable primary = null;
         try {
@@ -287,6 +287,8 @@ public class _03_InterviewQA {
             System.out.println("Inside try (won't matter)");
         } catch (NullPointerException npe) {
             System.out.println("Caught NPE during close of null resource: " + npe);
+        } catch (DemoResource.CloseFailException e) {
+            throw new RuntimeException(e);
         }
     }
 

@@ -20,63 +20,63 @@ import java.util.List;
 */
 public class _01_Theory {
     public static void main(String[] args) {
-        // Inheritance: "Dog is an Animal" (IS-A)
+        // Inheritance: "Dog1 is an Animal1" (IS-A)
         Food kibble = new Food("kibble");
-        Animal a1 = new Dog("Rex", "Labrador");
-        Animal a2 = new Cat("Mittens");
+        Animal1 a1 = new Dog1("Rex", "Labrador");
+        Animal1 a2 = new Cat1("Mittens");
 
         // Dynamic dispatch: the most specific overridden method runs at runtime
-        a1.speak(); // Dog.speak
-        a2.speak(); // Cat.speak
+        a1.speak(); // Dog1.speak
+        a2.speak(); // Cat1.speak
 
-        // Common behavior inherited from Animal
+        // Common behavior inherited from Animal1
         a1.live();
         a1.eat(kibble);
 
-        // Upcasting is implicit (Dog -> Animal). Downcasting needs checks.
-        Animal upcast = new Dog("Buddy", "Beagle");
-        if (upcast instanceof Dog) {
-            Dog d = (Dog) upcast; // safe downcast after instanceof
+        // Upcasting is implicit (Dog1 -> Animal1). Downcasting needs checks.
+        Animal1 upcast = new Dog1("Buddy", "Beagle");
+        if (upcast instanceof Dog1) {
+            Dog1 d = (Dog1) upcast; // safe downcast after instanceof
             d.fetch("ball");
         }
 
         // Covariant return: subclass narrows the return type
-        Animal someBaby = a1.reproduce(); // returns Animal (compile-time type)
-        Dog puppy = ((Dog) a1).reproduce(); // returns Dog (runtime + cast)
+        Animal1 someBaby = a1.reproduce(); // returns Animal1 (compile-time type)
+        Dog1 puppy = ((Dog1) a1).reproduce(); // returns Dog1 (runtime + cast)
 
         // Static methods are hidden, not overridden (resolved at compile-time)
-        System.out.println("Animal.kingdom(): " + Animal.kingdom());
-        System.out.println("Dog.kingdom(): " + Dog.kingdom());
+        System.out.println("Animal1.kingdom(): " + Animal1.kingdom());
+        System.out.println("Dog1.kingdom(): " + Dog1.kingdom());
 
         // Interfaces and default methods (multiple inheritance of type/behavior)
-        Dog rex = (Dog) a1;
+        Dog1 rex = (Dog1) a1;
         rex.play();
         rex.cuddle(); // default method from Pet
         System.out.println("Default conflict resolved greet(): " + rex.greet());
 
         // Abstract classes: cannot instantiate; define contracts + shared code
-        Shape s1 = new Circle(2.0);
-        Shape s2 = new Rectangle(2.0, 3.0);
+        Shape1 s1 = new Circle1(2.0);
+        Shape1 s2 = new Rectangle1(2.0, 3.0);
         s1.describe();
         s2.describe();
 
-        // Favor composition: Car HAS-A Engine, delegates to it
-        Car car = new Car();
+        // Favor composition: Car1 HAS-A Engine1, delegates to it
+        Car1 car = new Car1();
         car.start();
         car.stop();
 
         // Aggregation vs Composition:
-        // Aggregation (weak ownership): Team has Players that can outlive the Team
-        Player p1 = new Player("Alice");
-        Team team = new Team("Tigers");
+        // Aggregation (weak ownership): Team1 has Player1s that can outlive the Team1
+        Player1 p1 = new Player1("Alice");
+        Team1 team = new Team1("Tigers");
         team.addMember(p1);
-        System.out.println("Team members: " + team.getMembersView());
+        System.out.println("Team1 members: " + team.getMembersView());
         team.clear(); // removing players from team does NOT destroy players
-        System.out.println("Player still exists after team cleared: " + p1);
+        System.out.println("Player1 still exists after team cleared: " + p1);
 
-        // Composition (strong ownership): House creates and owns rooms
-        House house = new House("Kitchen", "Bedroom");
-        System.out.println("House rooms: " + house.getRoomsView());
+        // Composition (strong ownership): House1 creates and owns rooms
+        House1 house = new House1("Kitchen", "Bedroom");
+        System.out.println("House1 rooms: " + house.getRoomsView());
         house.demolish(); // destroys its rooms (ownership)
         System.out.println("After demolish rooms: " + house.getRoomsView());
 
@@ -91,19 +91,19 @@ public class _01_Theory {
         TextSource decorated = new TimestampText(new BracketsText(source));
         System.out.println("Decorated: " + decorated.text());
 
-        // Note on LSP (conceptual): functions that accept Animal should work with any subclass
+        // Note on LSP (conceptual): functions that accept Animal1 should work with any subclass
         // without strengthening preconditions or weakening postconditions (see comments below).
     }
 }
 
 /* ============================= Inheritance ============================= */
 
-class Animal {
+class Animal1 {
     private final String name;  // prefer private fields for encapsulation
     protected int age;          // protected: visible to subclasses (and same package)
     // Note: protected can leak encapsulation across packages via subclasses.
 
-    Animal(String name) {
+    Animal1(String name) {
         this.name = name;
     }
 
@@ -119,9 +119,9 @@ class Animal {
     }
 
     // Demonstrates covariant return. Subclasses may return a subtype.
-    public Animal reproduce() {
-        System.out.println(this + " reproduces (Animal version).");
-        return new Animal("Baby of " + getName());
+    public Animal1 reproduce() {
+        System.out.println(this + " reproduces (Animal1 version).");
+        return new Animal1("Baby of " + getName());
     }
 
     // Overloading: same name, different parameters
@@ -130,11 +130,11 @@ class Animal {
     }
 
     // static methods are hidden (not polymorphic)
-    static String kingdom() { return "Animalia"; }
+    static String kingdom() { return "Animal1ia"; }
 
     // Hook usable by subclasses
     protected void protectedHook() {
-        System.out.println("Animal protected hook for subclasses.");
+        System.out.println("Animal1 protected hook for subclasses.");
     }
 
     @Override
@@ -167,10 +167,10 @@ interface WithDefaultB {
     default String greet() { return "Hello from B"; }
 }
 
-class Dog extends Animal implements Pet, WithDefaultA, WithDefaultB {
+class Dog1 extends Animal1 implements Pet, WithDefaultA, WithDefaultB {
     private final String breed;
 
-    Dog(String name, String breed) {
+    Dog1(String name, String breed) {
         super(name);     // super: constructor chaining to base class
         this.breed = breed;
         this.age = 1;    // protected field inherited; careful with encapsulation
@@ -188,11 +188,11 @@ class Dog extends Animal implements Pet, WithDefaultA, WithDefaultB {
         for (int i = 0; i < times; i++) speak();
     }
 
-    // Covariant return type: returns Dog (subtype of Animal)
+    // Covariant return type: returns Dog1 (subtype of Animal1)
     @Override
-    public Dog reproduce() {
-        System.out.println(this + " reproduces (Dog version).");
-        return new Dog("Puppy of " + getName(), this.breed);
+    public Dog1 reproduce() {
+        System.out.println(this + " reproduces (Dog1 version).");
+        return new Dog1("Puppy of " + getName(), this.breed);
     }
 
     // Static method hiding (not overriding)
@@ -219,8 +219,8 @@ class Dog extends Animal implements Pet, WithDefaultA, WithDefaultB {
     }
 }
 
-class Cat extends Animal implements Pet {
-    Cat(String name) {
+class Cat1 extends Animal1 implements Pet {
+    Cat1(String name) {
         super(name);
     }
 
@@ -237,14 +237,14 @@ class Cat extends Animal implements Pet {
 
 /*
  LSP note:
- - A function expecting Animal should not break when given Dog or Cat.
+ - A function expecting Animal1 should not break when given Dog1 or Cat1.
  - Subclasses should not strengthen preconditions (require more) nor weaken postconditions (promise less).
  - For example, overriding eat(Food) to only accept "meat" in a subclass would violate LSP if callers pass any Food.
 */
 
 /* ============================= Abstract classes ============================= */
 
-abstract class Shape {
+abstract class Shape1 {
     public abstract double area();
     public abstract double perimeter();
 
@@ -254,82 +254,82 @@ abstract class Shape {
     }
 }
 
-class Circle extends Shape {
+class Circle1 extends Shape1 {
     private final double r;
-    Circle(double r) { this.r = r; }
+    Circle1(double r) { this.r = r; }
     @Override public double area() { return Math.PI * r * r; }
     @Override public double perimeter() { return 2 * Math.PI * r; }
-    @Override public String toString() { return "Circle(r=" + r + ")"; }
+    @Override public String toString() { return "Circle1(r=" + r + ")"; }
 }
 
-class Rectangle extends Shape {
+class Rectangle1 extends Shape1 {
     private final double w, h;
-    Rectangle(double w, double h) { this.w = w; this.h = h; }
+    Rectangle1(double w, double h) { this.w = w; this.h = h; }
     @Override public double area() { return w * h; }
     @Override public double perimeter() { return 2 * (w + h); }
-    @Override public String toString() { return "Rectangle(w=" + w + ", h=" + h + ")"; }
+    @Override public String toString() { return "Rectangle1(w=" + w + ", h=" + h + ")"; }
 }
 
 /* ============================= Composition ============================= */
 
-// Favor composition: Car HAS-A Engine and delegates; do not subclass Engine.
-final class Car {
-    private final Engine engine = new Engine(); // strong ownership
+// Favor composition: Car1 HAS-A Engine1 and delegates; do not subclass Engine1.
+final class Car1 {
+    private final Engine1 engine = new Engine1(); // strong ownership
     public void start() { engine.start(); }
     public void stop() { engine.stop(); }
-    // Encapsulation: we don't expose the Engine reference publicly.
-    @Override public String toString() { return "Car()"; }
+    // Encapsulation: we don't expose the Engine1 reference publicly.
+    @Override public String toString() { return "Car1()"; }
 }
 
-class Engine {
+class Engine1 {
     private boolean running;
     public void start() {
         if (!running) {
             running = true;
-            System.out.println("Engine started.");
+            System.out.println("Engine1 started.");
         }
     }
     public void stop() {
         if (running) {
             running = false;
-            System.out.println("Engine stopped.");
+            System.out.println("Engine1 stopped.");
         }
     }
 }
 
 /* ============================= Aggregation vs Composition ============================= */
 
-// Aggregation: Team has Players, but does not own their lifecycle
-class Team {
+// Aggregation: Team1 has Player1s, but does not own their lifecycle
+class Team1 {
     private final String name;
-    private final List<Player> members = new ArrayList<>();
-    Team(String name) { this.name = name; }
-    public void addMember(Player p) { members.add(p); }
-    public List<Player> getMembersView() { return Collections.unmodifiableList(members); }
+    private final List<Player1> members = new ArrayList<>();
+    Team1(String name) { this.name = name; }
+    public void addMember(Player1 p) { members.add(p); }
+    public List<Player1> getMembersView() { return Collections.unmodifiableList(members); }
     public void clear() { members.clear(); }
-    @Override public String toString() { return "Team(" + name + ")"; }
+    @Override public String toString() { return "Team1(" + name + ")"; }
 }
 
-class Player {
+class Player1 {
     private final String name;
-    Player(String name) { this.name = name; }
+    Player1(String name) { this.name = name; }
     public String name() { return name; }
-    @Override public String toString() { return "Player(" + name + ")"; }
+    @Override public String toString() { return "Player1(" + name + ")"; }
 }
 
-// Composition: House owns Rooms; Rooms should not outlive House.
+// Composition: House1 owns Rooms; Rooms should not outlive House1.
 // Note: Java cannot enforce this strictly; the design and usage enforce it.
-// We keep Room package-private and construct Rooms only inside House.
-class House {
+// We keep Room package-private and construct Rooms only inside House1.
+class House1 {
     private final List<Room> rooms = new ArrayList<>();
-    House(String... roomNames) {
+    House1(String... roomNames) {
         for (String rn : roomNames) {
             rooms.add(new Room(rn)); // created and owned here
         }
     }
     public List<Room> getRoomsView() { return Collections.unmodifiableList(rooms); }
     public void demolish() { rooms.clear(); } // implies rooms are "gone" with the house
-    @Override public String toString() { return "House(" + rooms.size() + " rooms)"; }
+    @Override public String toString() { return "House1(" + rooms.size() + " rooms)"; }
 }
 
 class Room {

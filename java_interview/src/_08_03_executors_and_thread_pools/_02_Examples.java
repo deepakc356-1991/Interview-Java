@@ -527,5 +527,9 @@ public class _02_Examples {
                 log("afterExecute captured exception: " + t);
             }
         }
+
+        public void setRemoveOnCancelPolicy(boolean b) {
+
+        }
     }
 }

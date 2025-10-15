@@ -48,7 +48,7 @@ import java.util.function.*;
  *
  * Equality vs ordering:
  * - Hash-based collections use equals/hashCode.
- * - Tree*/Sorted* use compareTo/Comparator; Comparator should be consistent with equals.
+ * - Tree/Sorted use compareTo/Comparator; Comparator should be consistent with equals.
  * - IdentityHashMap uses == (identity) and System.identityHashCode.
  *
  * Mutability:

@@ -366,6 +366,9 @@ public class _03_InterviewQA {
     // Helper: class with bad static initializer
     private static final class BadInit {
         static {
+            init(); // compiler can't prove this never returns
+        }
+        private static void init() {
             System.out.println("   BadInit static init throwing...");
             throw new RuntimeException("init error");
         }

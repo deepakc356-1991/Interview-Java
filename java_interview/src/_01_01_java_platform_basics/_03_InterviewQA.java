@@ -105,6 +105,10 @@ public class _03_InterviewQA {
         System.out.println("Review comments in the source for Q&A details.");
     }
 
+    private static void demoAutoboxingCaching() {
+
+    }
+
     // [BASICS] What are JDK, JRE, JVM?
     // A:
     // - JVM: The virtual machine that loads class files and executes bytecode with JIT.

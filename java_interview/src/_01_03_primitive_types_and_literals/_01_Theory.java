@@ -14,7 +14,7 @@ package _01_03_primitive_types_and_literals;
  - Floating-point literals are double by default (use F/f for float, D/d is optional).
  - Bases: decimal (no prefix), binary (0b/0B), octal (0 prefix; rarely used), hex (0x/0X).
  - Numeric separators: underscores (_) can improve readability, with restrictions (see below).
- - Char literals use single quotes; support escapes like '\n', '\t', '\\', '\'', '\"', and Unicode '\uXXXX'.
+ - Char literals use single quotes; support escapes like '\n', '\t', '\\', '\'', '\"', and Unicode '\\uXXXX'.
  - Boolean literals: true and false (no numeric truthiness).
 
  Important behavior and rules:

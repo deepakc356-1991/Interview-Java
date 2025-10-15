@@ -240,7 +240,7 @@ public class _02_Examples {
         }
 
         // Count words and characters
-        try (BufferedReader br = Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
+        try (BufferedReader br = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (!line.isEmpty()) {

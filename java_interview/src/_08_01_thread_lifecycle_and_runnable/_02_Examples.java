@@ -73,7 +73,11 @@ public class _02_Examples {
         @Override public void run() {
             for (int i = 0; i < 3; i++) {
                 System.out.println("Hello from " + getName());
-                sleep(50);
+                try {
+                    sleep(50);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }

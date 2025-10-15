@@ -437,7 +437,7 @@ public class _03_InterviewQA {
             <U extends T> Box(U u) { this.value = u; } // constructor has its own type param
         }
         static void run() {
-            Box<Number> b = new Box<Integer>(10);
+            Box<Number> b = new Box<>(10);
             System.out.println("Box holds: " + b.value);
         }
     }

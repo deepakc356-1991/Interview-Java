@@ -21,7 +21,7 @@ public class _03_InterviewQA {
 
     // ========== Sections ==========
 
-    private static void basic() {
+    public static void basic() {
         section("Basic");
 
         qa("What are the minimal parts of a Java source file?",
@@ -103,7 +103,7 @@ public class _03_InterviewQA {
                 "Yes, but only one may be public and its name must match the file.");
     }
 
-    private static void intermediate() {
+    public static void intermediate() {
         section("Intermediate");
 
         qa("Order of class initialization?",

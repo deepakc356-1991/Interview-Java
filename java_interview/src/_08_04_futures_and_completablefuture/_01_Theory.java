@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -85,6 +86,7 @@ public class _01_Theory {
                 t.setDaemon(true);
                 return t;
             });
+    private static final AtomicInteger THREAD_ID = new AtomicInteger(1);
 
     private static final ExecutorService BLOCKING_IO_POOL =
             Executors.newFixedThreadPool(4, r -> {
@@ -96,7 +98,6 @@ public class _01_Theory {
     private static final ExecutorService CPU_POOL =
             Executors.newWorkStealingPool(); // Good for CPU-bound tasks (ForkJoin under the hood)
 
-    private static final AtomicInteger THREAD_ID = new AtomicInteger(1);
     private static final Random RAND = new Random();
 
     public static void main(String[] args) throws Exception {
@@ -362,7 +363,7 @@ public class _01_Theory {
                 }).exceptionally(ex -> {
                     log("Recovering from: " + ex.getClass().getSimpleName());
                     return "fallback";
-                }).join();
+                }).join().toString();
         log("Recovered: " + recovered);
 
         // handle: observe and transform either success or failure
@@ -381,7 +382,7 @@ public class _01_Theory {
 
         // whenComplete: side-effects only, does not change outcome
         try {
-            CompletableFuture<String> cf =
+            CompletableFuture<Object> cf =
                     CompletableFuture.supplyAsync(() -> {
                         throw new RuntimeException("oops");
                     }).whenComplete((v, ex) -> {
